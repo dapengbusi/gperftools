@@ -1,0 +1,74 @@
+licenses(["notice"])
+
+exports_files(["LICENSE"])
+
+#load(":bazel/braft.bzl", "braft_proto_library")
+AM_CXXFLAGS = [
+    "-std=c++17",
+    "-Wall",
+    "-Wwrite-strings",
+    "-Woverloaded-virtual",
+    "-Wno-sign-compare",
+    "-fno-builtin-malloc",
+    "-fno-builtin-free",
+    "-fno-builtin-realloc",
+    "-fno-builtin-calloc",
+    "-fno-builtin-cfree",
+    "-fno-builtin-memalign",
+    "-fno-builtin-posix_memalign",
+    "-fno-builtin-valloc",
+    "-fno-builtin-pvalloc",
+    "-fno-builtin",
+]
+
+cc_library(
+    name = "gperftools",
+    srcs = glob([
+        "src/*.cc",
+        "src/base/*.cc",
+    ]),
+    hdrs = glob([
+        "src/*.h",
+        "src/*.cc",
+        "src/base/*.h",
+        "src/google/*.h",
+        "src/gperftools/*.h",
+    ]),
+    includes = [
+        "src",
+        "src/base/",
+        "src/google/",
+        "src/gperftools/",
+        "src/third_party/",
+    ],
+    defines = [],
+    copts = AM_CXXFLAGS,
+    #[
+    #    "-DGFLAGS=gflags",
+    #    "-DOS_LINUX",
+    #    "-DSNAPPY",
+    #    "-DHAVE_SSE42",
+    #    "-DNDEBUG",
+    #    "-D__STDC_FORMAT_MACROS",
+    #    "-fno-omit-frame-pointer",
+    #    "-momit-leaf-frame-pointer",
+    #    "-msse4.2",
+    #    "-pthread",
+    #    "-Wsign-compare",
+    #    "-Wno-unused-parameter",
+    #    "-Wno-unused-variable",
+    #    "-Woverloaded-virtual",
+    #    "-Wnon-virtual-dtor",
+    #    "-Wno-missing-field-initializers",
+    #    "-std=c++11",
+    #    "-DGFLAGS_NS=google",
+    #    "AM_CXXFLAGS",
+    #],
+    linkopts = [
+    #    "-lm",
+    #    "-lpthread",
+    ],
+    deps = [
+    #    "@com_github_brpc_brpc//:brpc",
+        ],
+  )
