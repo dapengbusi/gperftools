@@ -1,3 +1,10 @@
+##### NOTICE
+
+in order to use bazel complie first please exec ./configure 
+to output two .h files.
+
+
+
 gperftools
 ----------
 (originally Google Performance Tools)
